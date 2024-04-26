@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Paper, Typography, TextField, Button, Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { green } from '@mui/material/colors';
+import Navbar from './Navbar'
 
 const CreateRoom = () => {
     const [roomName, setRoomName] = useState('');
 
-    const handleRoomNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleRoomNameChange = (event) => {
         setRoomName(event.target.value);
     };
 
@@ -15,6 +16,8 @@ const CreateRoom = () => {
     };
 
     return (
+        <>
+        <Navbar/>
         <Box
             sx={{
                 display: 'flex',
@@ -60,6 +63,7 @@ const CreateRoom = () => {
                 </Box>
             </Paper>
         </Box>
+        </>
     );
 };
 

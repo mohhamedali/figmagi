@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Button, TextField, Typography, Paper } from '@mui/material';
 import { orange } from '@mui/material/colors';
+import Navbar from './Navbar'
 
-const signIn = () => {
+const SignIn = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData(prevState => ({
             ...prevState,
@@ -16,12 +17,14 @@ const signIn = () => {
         }));
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         console.log(formData);
     };
 
     return (
+        <>
+        <Navbar/>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: '#F5F5F5' }}>
             <Paper elevation={3} style={{ padding: '40px', borderRadius: '8px', maxWidth: '400px', width: '100%' }}>
                 <Typography variant="h4" component="h1" textAlign="center" gutterBottom color="primary">
@@ -53,7 +56,8 @@ const signIn = () => {
                 </form>
             </Paper>
         </div>
+        </>
     );
 }
 
-export default signIn;
+export default SignIn;
