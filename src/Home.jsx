@@ -5,7 +5,7 @@ let Home = () => {
     return (
         <>
         <Navbar/>
-          <h1 style={{fontSize:"50px",margin:'auto',textAlign:"center"}}>This Is Home Page</h1>
+          <h1 style={{fontSize:"50px",margin:'auto',textAlign:"center"}}>This is Home page</h1>
         </>
     )
 }

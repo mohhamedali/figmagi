@@ -1,7 +1,7 @@
 
 import SignUp from './SignUp'; 
 import SignIn from './SignIn';
-import MainInterface from './mainInterface';
+
 
 import App from './App';
 

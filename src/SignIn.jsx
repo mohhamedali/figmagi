@@ -4,10 +4,32 @@ import { orange } from '@mui/material/colors';
 import Navbar from './Navbar'
 
 const SignIn = () => {
+    const [isHovered, setIsHovered] = useState(false);
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
+    
+
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+  
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+  
+    const styles = {
+      container: {
+        padding: '20px',
+        backgroundColor: isHovered ? 'blue' : 'orange',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
+        height:'3rem'
+      }
+    };
+   
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -47,7 +69,9 @@ const SignIn = () => {
                         onChange={handleInputChange}
                         variant="outlined"
                     />
-                    <Button type="submit" variant="contained" style={{ backgroundColor: orange[500], color: 'white' }}>
+                    <Button type="submit" variant="contained"  style={styles.container}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}>
                         Log in
                     </Button>
                     <Typography variant="body2" textAlign="center" style={{ color: orange[500], cursor: 'pointer' }}>

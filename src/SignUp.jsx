@@ -5,12 +5,33 @@ import { teal } from '@mui/material/colors';
 import Navbar from './Navbar'
 
 const SignUp = () => {
+    const [isHovered, setIsHovered] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
         termsAgreed: false,
     });
+
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+  
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+  
+    const styles = {
+      container: {
+        padding: '20px',
+        backgroundColor: isHovered ? 'blue' : 'orange',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
+        height:'3rem'
+      }
+    };
+   
 
     const handleInputChange = (event) => {
         const { name, value, checked, type } = event.target;
@@ -58,7 +79,9 @@ const SignUp = () => {
                         control={<Checkbox name="termsAgreed" checked={formData.termsAgreed} onChange={handleInputChange} />}
                         label="I agree to the Terms of Service and Privacy Policy"
                     />
-                    <Button type="submit" variant="contained" style={{ backgroundColor: teal[500], color: 'white' }}>
+                    <Button  style={styles.container}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave} type="submit" variant="contained" >
                         Sign Up
                     </Button>
                     <Typography variant="body2" style={{ textAlign: 'center', color: teal[500], cursor: 'pointer' }}>
