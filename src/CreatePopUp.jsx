@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
+import React from "react"
 import { Paper, Typography, TextField, Button, Box } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { RxCross2 } from "react-icons/rx";
+import {useState} from 'react'
+import {CloseIcon} from '@mui/icons-material/Close';
 import { green } from '@mui/material/colors';
 
-const CreateRoom = () => {
+const CreatePopUp=({handleShowModal,addRooms})=>{
     const [roomName, setRoomName] = useState('');
+    
 
-    const handleRoomNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleRoomNameChange = (event) => {
         setRoomName(event.target.value);
     };
 
     const handleCreateRoom = () => {
-        console.log(`Creating room: ${roomName}`);
+        console.log("Clicked");
+        if(roomName.length>0){
+            console.log(`Creating room: ${roomName}`);
+            addRooms(roomName);
+            handleShowModal()
+        }else{
+            alert("Please Mention Name Of Room")
+        }
+       
     };
-
-    return (
-        <Box
+    return(
+        <>
+         <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -37,7 +48,10 @@ const CreateRoom = () => {
                     <Typography variant="h6" component="h2">
                         Create a Room
                     </Typography>
-                    <CloseIcon sx={{ cursor: 'pointer' }} />
+                    {/* <CloseIcon sx={{ cursor: 'pointer' }} /> */}
+                    <RxCross2 style={{cursor:'pointer'}} onClick={()=>handleShowModal()}/>
+
+
                 </Box>
                 <Box mt={2}>
                     <TextField
@@ -60,7 +74,8 @@ const CreateRoom = () => {
                 </Box>
             </Paper>
         </Box>
-    );
-};
 
-export default CreateRoom;
+        </>
+    )
+}
+export default CreatePopUp

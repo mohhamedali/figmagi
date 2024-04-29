@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Button, Paper } from '@mui/material';
 import { blue } from '@mui/material/colors';
+import Navbar from './Navbar'
 
 const Color = () => {
-    const [color, setColor] = useState<string>('#000000');
+    const [color, setColor] = useState('#000000');
 
-    const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleColorChange = (event)=> {
         setColor(event.target.value);
     };
 
     return (
+        <>
+        <Navbar/>
         <Box sx={{ textAlign: 'center', p: 4 }}>
             <Typography variant="h5" gutterBottom>
                 Pick a Color
@@ -34,6 +37,7 @@ const Color = () => {
                 Confirm Color
             </Button>
         </Box>
+        </>
     );
 };
 
